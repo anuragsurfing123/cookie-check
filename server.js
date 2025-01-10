@@ -5,25 +5,21 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(
-  cors({  
-    credentials: true, // Allow cookies to be sent
-  })
+  cors()
 );
 
 app.get('/set-cookie', (req, res) => {
-  // Set the cookie directly in the response
   res.cookie('anuragCookie', 'cookieValue', {
-    path: '/',              // Path where the cookie is valid
-    httpOnly: true,         // Prevent client-side JavaScript access
-    secure: true, // Use HTTPS in production
-    sameSite: 'None',       // Allow cross-site requests
+    path: '/',              
+    httpOnly: true,         
+    secure: true, 
+    sameSite: 'None',  
   });
 
   res.send('Cookie has been set with SameSite=None for .example.com!');
 });
 
 app.get('/get-cookie', (req, res) => {
-  // Log the cookies received in the request
   console.log(req.headers.cookie);
 
   if (req.headers.cookie) {
