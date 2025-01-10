@@ -13,7 +13,6 @@ app.use(
 app.get('/set-cookie', (req, res) => {
   // Set the cookie directly in the response
   res.cookie('anuragCookie', 'cookieValue', {
-    domain: '.bytebyte.digital', // Specify the domain
     path: '/',              // Path where the cookie is valid
     httpOnly: true,         // Prevent client-side JavaScript access
     secure: true, // Use HTTPS in production
