@@ -18,6 +18,7 @@ app.get('/set-cookie', (req, res) => {
     httpOnly: true,         
     secure: true, 
     sameSite: 'None',  
+    maxAge: 60 * 1000,
   });
 
   res.send('Cookie has been set with SameSite=None for .example.com!');
