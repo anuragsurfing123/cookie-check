@@ -9,7 +9,7 @@ app.use(cors({
     origin: 'https://taupe-cat-01f823.netlify.app', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'], // Specify required headers
-    credentials: true, // Allow credentials (cookies) to be sent
+    // credentials: true, // Allow credentials (cookies) to be sent
 }));
 
 app.get('/set-cookie', (req, res) => {
