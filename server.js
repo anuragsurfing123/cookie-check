@@ -4,9 +4,12 @@ const cors = require('cors')
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-app.use(
-  cors()
-);
+// Enable CORS for all origins
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+}));
 
 app.get('/set-cookie', (req, res) => {
   res.cookie('anuragCookie', 'cookieValue', {
