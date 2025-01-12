@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8000;
 // Enable CORS for all origins
 app.use(cors({
     origin: 'https://taupe-cat-01f823.netlify.app', // Replace with your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], // Specify required headers
     credentials: true, // Allow credentials (cookies) to be sent
 }));
