@@ -6,11 +6,10 @@ const PORT = process.env.PORT || 8000;
 
 // Enable CORS for all origins
 app.use(cors({
-    origin: '*',
+    origin: 'https://taupe-cat-01f823.netlify.app', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-    allowedHeaders: '*',  // This allows all headers
-    exposedHeaders: '*',  // This exposes all headers
-    credentials: true
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify required headers
+    credentials: true, // Allow credentials (cookies) to be sent
 }));
 
 app.get('/set-cookie', (req, res) => {
