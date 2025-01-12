@@ -8,7 +8,9 @@ const PORT = process.env.PORT || 8000;
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+    allowedHeaders: '*',  // This allows all headers
+    exposedHeaders: '*',  // This exposes all headers
+    credentials: true
 }));
 
 app.get('/set-cookie', (req, res) => {
