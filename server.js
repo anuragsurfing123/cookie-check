@@ -49,7 +49,7 @@ const PORT = process.env.PORT || 8000;
 
 // Enable CORS for all origins
 app.use(cors({
-  origin: 'https://transcendent-speculoos-22bb18.netlify.app/', // Replace with your frontend URL
+  origin: 'https://taupe-cat-01f823.netlify.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify required headers
   credentials: true, // Allow credentials (cookies) to be sent
@@ -103,10 +103,14 @@ const server = new ApolloServer({
   context: ({ req, res }) => ({ req, res }) // Provide req and res to resolvers
 });
 
-// Apply the Apollo Server middleware to the Express app
-server.applyMiddleware({ app });
+// Start the server and apply the middleware after starting
+async function startServer() {
+  await server.start();
+  server.applyMiddleware({ app });
 
-// Start the Express app with Apollo Server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}${server.graphqlPath}`);
-});
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}${server.graphqlPath}`);
+  });
+}
+
+startServer();
