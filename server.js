@@ -49,7 +49,7 @@ const PORT = process.env.PORT || 8000;
 
 // Enable CORS for all origins
 app.use(cors({
-  origin: 'https://transcendent-speculoos-22bb18.netlify.app/', // Replace with your frontend URL
+  origin: 'https://transcendent-speculoos-22bb18.netlify.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify required headers
   credentials: true, // Allow credentials (cookies) to be sent
