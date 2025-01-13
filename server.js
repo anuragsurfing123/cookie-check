@@ -106,7 +106,7 @@ const server = new ApolloServer({
 // Start the server and apply the middleware after starting
 async function startServer() {
   await server.start();
-  server.applyMiddleware({ app });
+  server.applyMiddleware({ app, cors: false });
 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}${server.graphqlPath}`);
