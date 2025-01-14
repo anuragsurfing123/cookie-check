@@ -47,18 +47,15 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// Enable CORS for all origins
 app.use(cors({
-  origin: 'https://transcendent-speculoos-22bb18.netlify.app', // Replace with your frontend URL
+  origin: 'https://transcendent-speculoos-22bb18.netlify.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify required headers
-  credentials: true, // Allow credentials (cookies) to be sent
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+  credentials: true, 
 }));
 
-// Use cookie-parser middleware to parse cookies from requests
 app.use(cookieParser());
 
-// Define the GraphQL schema
 const typeDefs = gql`
   type Query {
     getCookie: String
@@ -69,11 +66,10 @@ const typeDefs = gql`
   }
 `;
 
-// Define resolvers for the GraphQL schema
 const resolvers = {
   Query: {
     getCookie: (parent, args, context) => {
-      const cookies = context.req.cookies; // Access the cookies
+      const cookies = context.req.cookies; 
       if (cookies.anuragCookie) {
         return `Received cookies: ${cookies.anuragCookie}`;
       } else {
@@ -83,7 +79,7 @@ const resolvers = {
   },
   Mutation: {
     setCookie: (parent, args, context) => {
-      context.res.cookie('anuragCookie', 'cookieValue', {
+      context.res.cookie('sessionId', 'session_3c549229-e8ba-44e4-817a-197a4080f6b3_SN10052203020246', {
         path: '/',              
         httpOnly: true,         
         secure: true, 
@@ -96,14 +92,12 @@ const resolvers = {
   }
 };
 
-// Set up Apollo Server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req, res }) => ({ req, res }) // Provide req and res to resolvers
+  context: ({ req, res }) => ({ req, res }) 
 });
 
-// Start the server and apply the middleware after starting
 async function startServer() {
   await server.start();
   server.applyMiddleware({ app, cors: false });
